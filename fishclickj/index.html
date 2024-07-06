@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="texture/umi.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div id="fishCount">
+        <div class="fishItem">
+            <img src="texture/fish.webp" alt="Fish" class="fishImage">
+            <span id="fishCountText">0</span>
+        </div>
+        <div class="fishItem">
+            <img src="texture/salmon.webp" alt="Salmon" class="fishImage">
+            <span id="salmonCountText">0</span>
+        </div>
+        <div class="fishItem">
+            <img src="texture/cod.webp" alt="Cod" class="fishImage">
+            <span id="codCountText">0</span>
+        </div>
+        <div id="moneyDisplay" class="fishItem hidden">
+            <img src="texture/money.png" alt="Money" class="fishImage">
+            <span id="moneyCountText">0</span>
+        </div>
+    </div>
+    <div class="container">
+        <button id="fishButton">
+            <div id="cooldownMeter"></div>
+            Fish
+        </button>
+        <button id="sellButton">Sell</button>
+    </div>
+    <div id="menu">
+        <button id="shopButton" class="menuOption">Shop</button>
+    </div>
+    <div id="shopMenu">
+        <button class="menuOption" id="rodsButton">Rods</button>
+        <button class="menuOption">Bites</button>
+        <button class="menuOption">Upgrades</button>
+        <button class="menuOption">Boats</button>
+        <button id="backButtonShop" class="menuOption">Back</button>
+    </div>
+    <div id="rodsMenu" class="hidden">
+        <button id="woodenRodButton">
+            <img src="texture/woodenrod.png" alt="Wooden Rod" class="itemImage">
+            Wooden Rod (初期装備)
+        </button>
+        <button id="improvedRodButton">
+            <img src="texture/improverod.png" alt="Improved Rod" class="itemImage">
+            Improved Rod (500$)
+        </button>
+        <div id="currentRodText">Wooden Rod</div>
+        <button id="backButtonRods" class="menuOption">
+            Back
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
