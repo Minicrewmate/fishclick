@@ -1,0 +1,237 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    position: relative;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+#gameContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* 白文字にすることで、背景動画上で文字が見やすくなります */
+}
+
+#fishCount {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    gap: 20px; /* Space between fish items */
+}
+
+.fishItem {
+    display: flex;
+    align-items: center;
+}
+
+.fishImage {
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+}
+
+.fishCountText {
+    font-size: 24px;
+    margin-left: 10px; /* Space between image and text */
+}
+
+.container {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fishButton {
+    position: relative;
+    padding: 30px 60px; /* Increase padding for a larger button */
+    font-size: 24px; /* Adjust font size */
+    cursor: pointer;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow for the progress meter */
+    transition: transform 0.2s; /* Add transition for a smoother effect */
+}
+
+#fishButton:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+#cooldownMeter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background-color: #004d40;
+    width: 100%;
+    transform: scaleX(1); /* Start with full width */
+    transform-origin: left;
+    transition: transform 3s linear; /* Transition over 3 seconds */
+    visibility: hidden; /* Initially hidden */
+}
+
+#fishButton.disabled {
+    pointer-events: none; /* Disable pointer events to prevent clicking */
+    opacity: 0.5; /* Make the button look disabled */
+}
+
+#sellButton {
+    position: absolute;
+    bottom: 20px; /* Position at the bottom left */
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+#moneyDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fishImage {
+    width: 30px; /* Icon size */
+    height: auto;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* メニューのスタイル */
+#menu {
+    position: fixed;
+    right: -270px; /* Initial position off-screen */
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #00796b;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease-in-out; /* Slide-in transition */
+}
+
+/* メニューを表示させるためにカーソルを合わせたときのスタイル */
+#menu.show {
+    transform: translateX(-100%); /* Show menu */
+}
+
+/* メニューオプションのスタイル */
+.menuOption {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menuOption:hover {
+    background-color: #003d33;
+}
+
+/* ショップメニューのスタイル */
+#shopMenu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #004d40;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: none; /* Initially hidden */
+}
+
+/* ショップメニューを表示させるためのスタイル */
+#shopMenu.show {
+    display: block;
+}
+
+/* Rodsメニューのスタイル */
+#rodsMenu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #004d40;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: none; /* Initially hidden */
+}
+
+/* Rodsメニューを表示させるためのスタイル */
+#rodsMenu.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* アイテムボタンのスタイル */
+#rodsMenu button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+#rodsMenu button:hover {
+    background-color: #004d40;
+}
+
+.itemImage {
+    width: 50px; /* アイテム画像のサイズ */
+    height: auto;
+    margin-right: 10px; /* アイテム画像とテキストの間隔 */
+}
